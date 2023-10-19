@@ -3,39 +3,71 @@ import { TwitterFollowCard } from './TwitterFollowCard'
 
 export function App() {
     const format = (userName) => `@${userName}`
+    const users = [
+        {
+            userName: 'antonio',
+            name: 'Juan Antonio',
+            isFollowing: true
+        },
+        {
+            userName: 'midudev',
+            name: 'Miguel Angel Duran',
+            isFollowing: false
+        },
+        {
+            userName: 'pheralb',
+            name: 'Pablo Hernandez',
+            isFollowing: true
+        },
+        {
+            userName: 'elonmusk',
+            name: 'Elon Musk',
+            isFollowing: true
+        },
+        {
+            userName: 'vxnder',
+            name: 'VanderHartk',
+            isFollowing: true
+        },
+    ]
 
     return (
         <section className="App">
-            <TwitterFollowCard 
+            {
+                users.map(user => {
+                    const { userName, name, isFollowing } = user
+                    return (
+                        <TwitterFollowCard
+                            key={userName}
+                            formatUserName={format} 
+                            userName={userName} 
+                            initialFollowing={isFollowing}
+                        >
+                            {name}
+                        </TwitterFollowCard>
+                    )
+                })
+            }
+            {/* <TwitterFollowCard 
                 formatUserName={format} 
-                isFollowing 
-                userName="antonio" >
-                Juan Antonio
-            </TwitterFollowCard>
-            <TwitterFollowCard 
-                formatUserName={format} 
-                isFollowing={false} 
                 userName="midudev" >
                 Miguel Angel Duran
             </TwitterFollowCard>
             <TwitterFollowCard 
                 formatUserName={format} 
-                isFollowing 
                 userName="pheralb" >
                 Pablo Hernandez
             </TwitterFollowCard>
             <TwitterFollowCard 
                 formatUserName={format} 
-                isFollowing 
                 userName="elonmusk" >
                 Elon Musk
             </TwitterFollowCard>
             <TwitterFollowCard 
                 formatUserName={format} 
-                isFollowing 
                 userName="vxnder" >
                 VanderHart
-            </TwitterFollowCard>
+            </TwitterFollowCard> */}
         </section>
     )
 }
